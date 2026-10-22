@@ -1,49 +1,31 @@
-# Gift Website — Starter Scaffold
+# Gift Website
 
-Starter project for the Gift brand website. This is **Phase 1 (project structure + initial UI scaffold)**, not the complete production website. No external accounts are connected and no live deployment has been performed.
+Next.js App Router + TypeScript website. Public content is stored in JSON files in GitHub and deployed through Vercel.
 
-## Stack
-- Next.js App Router + TypeScript
-- JSON files for editable services, portfolio records, archive, and site settings
-- Vercel deployment target
-- GitHub repository as the content source of truth
-- Cloudinary planned for public image delivery; Google Drive planned for originals/archive
+## Admin panel
 
-## Requirements
-- Node.js 20.9+ recommended
-- npm
+- URL path: `/gift-control-panel`. The path is not a security boundary; password authentication is required.
+- Edits `data/site.json`, `data/services.json`, and `data/portfolio.json`.
+- Saving commits the selected JSON file to GitHub; Vercel should redeploy when GitHub integration is connected.
+- Uses an expiring HMAC-signed HttpOnly cookie, secure in production, SameSite=Strict, and same-origin checks for state-changing requests.
+- Admin page is marked noindex.
 
-## Run locally
-```bash
-npm install
-npm run dev
-```
-Open http://localhost:3000.
+### Required Vercel environment variables
 
-## Current scaffold
-- `app/page.tsx`: first-pass Arabic homepage sections
-- `app/globals.css`: Gift dark-mode tokens and responsive layout based on Gift Design System v1.0
-- `data/services.json`: four initial service records
-- `data/portfolio.json`: placeholder draft only; replace with real Gift work before launch
-- `data/archive.json`: archive data placeholder
-- `data/site.json`: WhatsApp number and social links
-- `types/content.ts`: TypeScript content types
-- `.env.example`: names of expected environment variables only; no secrets
+Configure these in Vercel Project Settings → Environment Variables for Production, then redeploy:
 
-## Important implementation notes
-1. The admin interface and server-side GitHub write API are **not implemented yet**.
-2. Do not put a GitHub token, Cloudinary API secret, session secret, or password in client-side code or committed files.
-3. Use Cloudinary signed uploads generated server-side or a restricted unsigned upload preset with appropriate constraints. Never expose `CLOUDINARY_API_SECRET` in browser code.
-4. GitHub writes should use the file SHA/version to prevent overwriting newer content. Add authentication, rate limiting, CSRF protections where applicable, input validation, secure cookies, and audit logging before exposing admin routes.
-5. `metadataBase` currently uses a placeholder Vercel URL; update it after the actual deployment URL is known.
-6. The language and theme controls are visual placeholders and are disabled until their behavior is implemented.
-7. Real product images, final Arabic/English copy, Google Analytics ID, and Search Console verification are still needed.
-8. Google Drive share URLs may not behave as direct, performant image URLs. Keep Drive for original/archive and use Cloudinary delivery URLs in the public JSON.
+- `ADMIN_PASSWORD`: unique password of at least 12 characters.
+- `ADMIN_SESSION_SECRET`: random secret of at least 32 characters.
+- `GITHUB_TOKEN`: fine-grained token limited to this repository with Contents read/write permission.
+- `GITHUB_OWNER=hamzasoltan`
+- `GITHUB_REPO=Gift`
+- `GITHUB_BRANCH=main`
 
-## Suggested next phases
-1. Finalize homepage design with the supplied logo and real images.
-2. Implement language switching (`ar`/`en`) and persistent theme toggle.
-3. Build secure admin authentication and server-side JSON read/write endpoints.
-4. Integrate Cloudinary upload and GitHub compare-and-swap writes.
-5. Add archive/restore, downloadable JSON backups, validation, and failure handling.
-6. Add analytics/consent handling, SEO details, and test the production build.
+Never use `NEXT_PUBLIC_*` for secrets or commit credentials to GitHub.
+
+## Limitations and next steps
+
+- The admin panel is implemented but not usable until the Vercel secrets above are configured and tested.
+- First version edits raw JSON rather than visual form fields.
+- Cloudinary uploads, durable rate limiting, audit trail, backups/restore, and production end-to-end tests are not yet implemented.
+- Portfolio still contains placeholder sample work; replace it with real Gift photos.
