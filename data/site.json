@@ -1,3 +1,14 @@
 {
- "brandName":"Gift","whatsappNumber":"201553276413","socialLinks":{"facebook":"https://www.facebook.com/profile.php?id=100063698629667&mibextid=ZbWKwL","instagram":"https://www.instagram.com/giftegypt_22?igsh=NDdtc2ZpNnIzNHF6"},"defaultLocale":"ar","defaultTheme":"dark","pricingNote":{"ar":"الأسعار حسب الطلب","en":"Pricing is available upon request"}
+  "brandName": "Gift",
+  "whatsappNumber": "201553276413",
+  "socialLinks": {
+    "facebook": "https://www.facebook.com/profile.php?id=100063698629667&mibextid=ZbWKwL",
+    "instagram": "https://www.instagram.com/giftegypt_22?igsh=NDdtc2ZpNnIzNHF6"
+  },
+  "defaultLocale": "ar",
+  "defaultTheme": "dark",
+  "pricingNote": {
+    "ar": "الأسعار حسب الطلب",
+    "en": "Pricing is available upon request"
+  }
 }
