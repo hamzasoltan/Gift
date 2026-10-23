@@ -1,3 +1,25 @@
 [
-  {"id":"sample-work-001","title":{"ar":"مثال توضيحي — يُستبدل بصورة حقيقية","en":"Sample Entry — Replace with Real Work"},"category":"gift-packaging","description":{"ar":"هذا سجل تجريبي فقط. أضف صور أعمال Gift الحقيقية قبل الإطلاق.","en":"This is placeholder content. Add real Gift work photos before launch."},"images":[],"badge":{"ar":"تجريبي","en":"Sample"},"featured":false,"whatsappMessage":{"ar":"مرحبًا Gift، أريد الاستفسار عن هذا العمل.","en":"Hello Gift, I would like to ask about this work."},"status":"draft"}
+  {
+    "id": "sample-work-001",
+    "title": {
+      "ar": "مثال توضيحي — يُستبدل بصورة حقيقية",
+      "en": "Sample Entry — Replace with Real Work"
+    },
+    "category": "gift-packaging",
+    "description": {
+      "ar": "هذا سجل تجريبي فقط. أضف صور أعمال Gift الحقيقية قبل الإطلاق.",
+      "en": "This is placeholder content. Add real Gift work photos before launch."
+    },
+    "images": [],
+    "badge": {
+      "ar": "تجريبي",
+      "en": "Sample"
+    },
+    "featured": false,
+    "whatsappMessage": {
+      "ar": "مرحبًا Gift، أريد الاستفسار عن هذا العمل.",
+      "en": "Hello Gift, I would like to ask about this work."
+    },
+    "status": "draft"
+  }
 ]
