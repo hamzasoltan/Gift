@@ -70,23 +70,5 @@
       "en": "Hello Gift, I would like to ask about advertising and promotional services."
     },
     "active": true
-  },
-  {
-    "id": "service-1792831219506",
-    "slug": "service-1792831219506",
-    "name": {
-      "ar": "سيكو سيكو",
-      "en": "Seco Seco"
-    },
-    "description": {
-      "ar": "هذا في علم الغيب",
-      "en": "A7A"
-    },
-    "image": "",
-    "whatsappMessage": {
-      "ar": "JH",
-      "en": "HGF"
-    },
-    "active": true
   }
 ]
