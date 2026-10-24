@@ -2,12 +2,12 @@
   {
     "id": "sample-work-001",
     "title": {
-      "ar": "مثال توضيحي — يُستبدل بصورة حقيقية",
-      "en": "Sample Entry — Replace with Real Work"
+      "ar": "مشروع تجريبي — استبدله بصور أعمالك الحقيقية",
+      "en": "Sample Entry — Replace with Real Works"
     },
     "category": "gift-packaging",
     "description": {
-      "ar": "هذا سجل تجريبي فقط. أضف صور أعمال Gift الحقيقية قبل الإطلاق.",
+      "ar": "هذا محتوى تجريبي مؤقت. أضف صور أعمال Gift الحقيقية قبل الإطلاق.",
       "en": "This is placeholder content. Add real Gift work photos before launch."
     },
     "images": [],
@@ -21,28 +21,5 @@
       "en": "Hello Gift, I would like to ask about this work."
     },
     "status": "draft"
-  },
-  {
-    "id": "work-1792832283434",
-    "title": {
-      "ar": "الب",
-      "en": "ابيل"
-    },
-    "category": "ايبا",
-    "description": {
-      "ar": "ايبال",
-      "en": "ابيبي"
-    },
-    "images": [],
-    "badge": {
-      "ar": "ا",
-      "en": "بي"
-    },
-    "featured": false,
-    "whatsappMessage": {
-      "ar": "يا",
-      "en": "بيا"
-    },
-    "status": "published"
   }
 ]
