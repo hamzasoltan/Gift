@@ -129,6 +129,36 @@ export default function GiftControlPanel() {
     setStatus("تم تسجيل الخروج.");
   }
 
+  async function uploadImages(event: React.ChangeEvent<HTMLInputElement>) {
+    const selected = Array.from(event.target.files ?? []);
+    event.target.value = "";
+    if (!selected.length || !work) return;
+    const allowed = selected.filter((file) => file.type.startsWith("image/") && file.size <= 8 * 1024 * 1024);
+    if (allowed.length !== selected.length) {
+      setStatus("اختر صورًا فقط، وحجم كل صورة لا يتجاوز 8 ميجابايت.");
+      if (!allowed.length) return;
+    }
+    setBusy(true);
+    setStatus("جارٍ رفع الصور إلى Cloudinary…");
+    try {
+      const uploaded: string[] = [];
+      for (const file of allowed) {
+        const form = new FormData();
+        form.append("file", file);
+        const response = await fetch("/api/gift-image-upload", { method: "POST", body: form });
+        const result = await response.json();
+        if (!response.ok || typeof result.url !== "string") throw new Error(result.error || "فشل رفع الصورة.");
+        uploaded.push(result.url);
+      }
+      patchWork({ images: [...work.images, ...uploaded] });
+      setStatus(`تم رفع ${uploaded.length} صورة. اضغط «حفظ ونشر التعديلات» لحفظ الروابط في المشروع.`);
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : "تعذر رفع الصور.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
   const data = readData();
   const site = data?.site;
   const services = data?.services ?? [];
@@ -237,7 +267,7 @@ export default function GiftControlPanel() {
                       <label className="admin-field"><span>التصنيف (اربطه بالخدمة عند الحاجة)</span><input value={work.category} onChange={(e) => patchWork({ category: e.target.value })} placeholder="gift-packaging" /></label>
                       <label className="admin-field"><span>الوصف — عربي</span><textarea rows={3} value={work.description.ar} onChange={(e) => patchWorkText("description", "ar", e.target.value)} /></label>
                       <label className="admin-field"><span>الوصف — English</span><textarea dir="ltr" rows={3} value={work.description.en} onChange={(e) => patchWorkText("description", "en", e.target.value)} /></label>
-                      <label className="admin-field"><span>روابط الصور (كل رابط في سطر)</span><textarea dir="ltr" rows={4} value={work.images.join("\n")} onChange={(e) => patchWork({ images: e.target.value.split("\n").map((line) => line.trim()).filter(Boolean) })} placeholder="https://..." /><small>حط رابط كل صورة في سطر مستقل. رفع الصور مباشرة من الجهاز هنضيفه في مرحلة لاحقة.</small></label>
+                      <label className="admin-field"><span>رفع صور من الجهاز</span><input type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple onChange={uploadImages} disabled={busy} /><small>صور JPG أو PNG أو WebP أو GIF، بحد أقصى 8 ميجابايت للصورة. بعد الرفع اضغط «حفظ ونشر التعديلات» لحفظ الروابط.</small></label><label className="admin-field"><span>روابط الصور (كل رابط في سطر)</span><textarea dir="ltr" rows={4} value={work.images.join("\n")} onChange={(e) => patchWork({ images: e.target.value.split("\n").map((line) => line.trim()).filter(Boolean) })} placeholder="https://..." /><small>تقدر ترفع الصور من جهازك أو تضيف روابط مباشرة يدويًا.</small></label>
                       <label className="admin-field"><span>الشارة — عربي</span><input value={work.badge.ar} onChange={(e) => patchWorkText("badge", "ar", e.target.value)} /></label>
                       <label className="admin-field"><span>الشارة — English</span><input dir="ltr" value={work.badge.en} onChange={(e) => patchWorkText("badge", "en", e.target.value)} /></label>
                       <label className="admin-field"><span>رسالة واتساب — عربي</span><textarea rows={2} value={work.whatsappMessage.ar} onChange={(e) => patchWorkText("whatsappMessage", "ar", e.target.value)} /></label>
