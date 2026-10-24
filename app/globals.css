@@ -13,3 +13,38 @@
 .work-empty{color:var(--muted);padding:24px 0}
 @media(max-width:900px){.work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.work-image-wrap{height:clamp(170px,32vw,250px)}}
 @media(max-width:620px){.work-grid{grid-template-columns:1fr}.work-image-wrap{height:240px}.work-caption{padding:14px 16px 18px}}
+
+/* Interactive portfolio */
+.portfolio-toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:-6px 0 28px}
+.portfolio-filter{display:inline-flex;align-items:center;gap:9px;padding:10px 15px;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--muted);font:inherit;font-size:13px;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.portfolio-filter span{font-size:11px;opacity:.72}
+.portfolio-filter:hover,.portfolio-filter.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.work-card{min-width:0;overflow:hidden;border:1px solid var(--border);border-radius:18px;background:var(--surface);transition:transform .2s,border-color .2s}
+.work-card:hover{transform:translateY(-4px);border-color:rgba(124,196,245,.48)}
+.work-card-open{display:block;width:100%;padding:0;border:0;background:transparent;color:inherit;text-align:start;cursor:pointer}
+.work-card .work-image-wrap{position:relative;width:100%;height:clamp(170px,20vw,270px);overflow:hidden;background:var(--surface-raised)}
+.work-card .work-image{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.work-card:hover .work-image{transform:scale(1.035)}
+.work-featured-badge{position:absolute;top:12px;inset-inline-start:12px;padding:6px 10px;border-radius:999px;background:var(--green);color:#0e1626;font-size:11px;font-weight:800}
+.work-caption{padding:16px 18px 19px}
+.work-caption-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.work-caption-top>span:first-child{color:var(--blue);font-size:13px;font-weight:800}
+.work-category{padding:4px 8px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:11px}
+.work-caption h3{margin:0 0 7px;font-size:17px;line-height:1.5;color:var(--text)}
+.work-caption p{margin:0;color:var(--muted);font-size:13px;line-height:1.8;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.work-details-link{display:inline-flex;gap:7px;align-items:center;margin-top:14px;color:var(--green);font-size:12px;font-weight:800}
+.portfolio-more-wrap{display:flex;justify-content:center;margin-top:30px}
+.portfolio-modal-backdrop{position:fixed;z-index:1000;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(3,8,18,.82);backdrop-filter:blur(8px);overflow:auto}
+.portfolio-modal{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:28px;width:min(920px,100%);max-height:min(90vh,850px);overflow:auto;padding:24px;border:1px solid var(--border);border-radius:24px;background:var(--background);box-shadow:0 24px 90px rgba(0,0,0,.4)}
+.portfolio-modal-close{position:absolute;z-index:2;top:12px;inset-inline-end:12px;width:38px;height:38px;border:1px solid var(--border);border-radius:50%;background:var(--surface);color:var(--text);font-size:26px;cursor:pointer}
+.portfolio-modal-gallery{min-width:0;display:flex;flex-direction:column;gap:10px}
+.portfolio-modal-main-image{order:0;width:100%;max-height:460px;aspect-ratio:4/3;object-fit:contain;border-radius:14px;background:#080b13}
+.modal-thumb{order:1;width:70px;height:60px;overflow:hidden;border:2px solid transparent;border-radius:9px;padding:0;background:var(--surface);cursor:pointer}
+.modal-thumb.active{border-color:var(--green)}
+.modal-thumb img{width:100%;height:100%;object-fit:cover}
+.portfolio-modal-gallery:has(.modal-thumb:nth-child(2)) .modal-thumb{display:inline-block}
+.portfolio-modal-content{align-self:center;padding:24px 8px}
+.portfolio-modal-content h2{font-size:clamp(24px,3vw,36px);line-height:1.3;margin:12px 0}
+.portfolio-modal-content>p{color:var(--muted);line-height:1.9;margin-bottom:24px}
+@media(max-width:900px){.work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.work-card .work-image-wrap{height:clamp(170px,32vw,250px)}.portfolio-modal{grid-template-columns:1fr;gap:18px}.portfolio-modal-content{padding:4px 0}}
+@media(max-width:620px){.work-grid{grid-template-columns:1fr}.work-card .work-image-wrap{height:240px}.portfolio-toolbar{gap:8px}.portfolio-filter{padding:9px 12px}.portfolio-modal-backdrop{padding:10px}.portfolio-modal{padding:16px;border-radius:18px;max-height:95vh}.portfolio-modal-main-image{max-height:340px}}
