@@ -10,7 +10,9 @@
       "ar": "هذا محتوى تجريبي مؤقت. أضف صور أعمال Gift الحقيقية قبل الإطلاق.",
       "en": "This is placeholder content. Add real Gift work photos before launch."
     },
-    "images": [],
+    "images": [
+      "https://res.cloudinary.com/tsglo2ba/image/upload/v1792839895/gift-portfolio/eootnnnphdbtrxbcjaik.jpg"
+    ],
     "badge": {
       "ar": "تجريبي",
       "en": "Sample"
